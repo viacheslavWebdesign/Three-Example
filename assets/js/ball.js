@@ -120,7 +120,7 @@ window.onload = function() {
     interaction = new THREE.Interaction(renderer, scene, camera);
 
    const textureLoader = new THREE.TextureLoader();
-   const texture = textureLoader.load('/assets/textures/grass.jpg');
+   const texture = textureLoader.load('./assets/textures/grass.jpg');
    texture.wrapS = THREE.RepeatWrapping;
    texture.wrapT = THREE.RepeatWrapping;
    texture.repeat.set( 4, 4 );
@@ -138,7 +138,7 @@ window.onload = function() {
     //add ball
     var loader = new THREE.GLTFLoader();
 
-    loader.load('/assets/models/SoccerBall/soccer_ball.gltf', function ( gltf ) {
+    loader.load('./assets/models/SoccerBall/soccer_ball.gltf', function ( gltf ) {
         ball = gltf.scene.children[0];
         ball.receiveShadow = true;
         scene.add(ball);
