@@ -100,7 +100,6 @@ const tick = () => {
 
    camera.position.x = cursor.x;
    camera.position.z = cursor.z;
-
    
 	renderer.render(scene, camera);
 	window.requestAnimationFrame(tick);

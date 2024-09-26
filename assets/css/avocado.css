@@ -149,6 +149,8 @@ html {
   -ms-overflow-style: scrollbar;
   width: 100%;
   font-size: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 * {
@@ -162,24 +164,22 @@ html {
           box-sizing: inherit;
 }
 
-.kmnd-main {
+.cstm-main {
   position: relative;
 }
 
-.kmnd-body {
+.cstm-body {
   width: 100%;
   min-width: 320px;
   min-height: 100vh;
-  font-family: sans-serif;
+  font-family: "Gowun Batang", serif;
   font-size: 1rem;
   line-height: 1.2;
   color: #fff;
-  background: #000;
+  background: linear-gradient(45deg, rgb(0, 0, 0), rgb(15, 15, 15));
   margin: 0 auto;
-  overflow-x: hidden;
-}
-.kmnd-body_noscroll {
-  overflow: hidden;
+  height: 100%;
+  overflow: auto;
 }
 
 button, input, textarea, select {
@@ -222,4 +222,251 @@ canvas {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
   border: none !important;
+}
+
+.avocado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  padding-left: 40px;
+  padding-right: 40px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.main-title {
+  font-size: 70px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+}
+.main-title div:first-of-type {
+  font-size: 20px;
+  margin-right: 70px;
+  opacity: 0.25;
+}
+.main-title div:first-of-type span {
+  opacity: 0;
+  will-change: opacity;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.main-title div:first-of-type span:nth-of-type(1) {
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+.main-title div:first-of-type span:nth-of-type(2) {
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+.main-title div:first-of-type span:nth-of-type(3) {
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
+}
+.main-title div:last-of-type {
+  opacity: 0;
+  -webkit-transition: all 0s ease-in-out;
+  transition: all 0s ease-in-out;
+  -webkit-transition-delay: 4s;
+          transition-delay: 4s;
+  will-change: opacity transform;
+}
+.main-title div:last-of-type span:last-of-type {
+  display: none;
+}
+
+.slide-prompt {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.2em;
+}
+
+.slideshow {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  will-change: opacity transform;
+  -webkit-transition: all 0s;
+  transition: all 0s;
+  pointer-events: none;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.slide.active {
+  -webkit-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+          transform: translateY(0%);
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transition: opacity 0.25s ease 0.75s, -webkit-transform 1s ease 0s;
+  transition: opacity 0.25s ease 0.75s, -webkit-transform 1s ease 0s;
+  transition: transform 1s ease 0s, opacity 0.25s ease 0.75s;
+  transition: transform 1s ease 0s, opacity 0.25s ease 0.75s, -webkit-transform 1s ease 0s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.slide.prev {
+  -webkit-transform: translateY(-130%);
+      -ms-transform: translateY(-130%);
+          transform: translateY(-130%);
+  pointer-events: auto;
+  -webkit-transition: opacity 0.25s ease, -webkit-transform 1s ease;
+  transition: opacity 0.25s ease, -webkit-transform 1s ease;
+  transition: transform 1s ease, opacity 0.25s ease;
+  transition: transform 1s ease, opacity 0.25s ease, -webkit-transform 1s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.slide.next {
+  -webkit-transform: translateY(130%);
+      -ms-transform: translateY(130%);
+          transform: translateY(130%);
+  pointer-events: auto;
+  -webkit-transition: opacity 0.25s ease, -webkit-transform 1s ease;
+  transition: opacity 0.25s ease, -webkit-transform 1s ease;
+  transition: transform 1s ease, opacity 0.25s ease;
+  transition: transform 1s ease, opacity 0.25s ease, -webkit-transform 1s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.slide.entry .main-title div:first-of-type span {
+  opacity: 1;
+}
+.slide.entry .main-title div:last-of-type {
+  opacity: 1;
+}
+
+.row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+}
+
+.col {
+  width: calc(50% - 20px);
+}
+
+.title {
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 42px;
+  letter-spacing: 0.2em;
+  margin-bottom: 32px;
+}
+
+.text {
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  line-height: 1.8;
+  opacity: 0.5;
+}
+
+.subtitle {
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  font-size: 38px;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+
+@media only screen and (max-width: 1023px) {
+  .main-title {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    letter-spacing: normal;
+    position: relative;
+    -webkit-transform: translateY(5%);
+        -ms-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+  .main-title div:first-of-type {
+    margin-right: 0;
+    margin-bottom: 350px;
+  }
+  .main-title div:first-of-type span:not(:last-of-type) {
+    margin-right: 0.8em;
+  }
+  .main-title div:last-of-type {
+    position: relative;
+    bottom: -10%;
+  }
+  .main-title div:last-of-type span:first-of-type {
+    display: none;
+  }
+  .main-title div:last-of-type span:last-of-type {
+    display: inline;
+  }
+  .row {
+    display: block;
+  }
+  .col {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .main-title {
+    font-size: 50px;
+  }
+  .main-title div:first-of-type {
+    margin-bottom: 200px;
+  }
+  .title {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+  .text {
+    font-size: 12px;
+  }
 }
