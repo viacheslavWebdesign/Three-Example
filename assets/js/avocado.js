@@ -1,7 +1,7 @@
-import * as THREE from './assets/js/three.module.min.js';
-import { OrbitControls } from './assets/js/OrbitControls.js'
-import { GLTFLoader } from './assets/js/GLTFLoader.js';
-import TWEEN from './assets/js/tween.module.js';
+import * as THREE from './three.module.min.js';
+import { OrbitControls } from './OrbitControls.js'
+import { GLTFLoader } from './GLTFLoader.js';
+import TWEEN from './tween.module.js';
 
 document.addEventListener("DOMContentLoaded", function() {
 
