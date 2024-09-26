@@ -8,9 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 let lastScrollTime = 0;
 const SCROLL_DELAY = 2000;
-
+let touchStartY = null;
 let currentIndex = 0;
-
 let rotationAvocadoRunning = false;
 let rotationAvocado;
 
@@ -236,6 +235,26 @@ function handleScroll(event) {
        }
    }
 }
+
+function handleSwipe(event) {
+   if (event.type === 'touchstart') {
+      touchStartY = event.touches[0].clientY;
+   } else if (event.type === 'touchend' && touchStartY !== null) {
+      const touchEndY = event.changedTouches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+      if (Math.abs(deltaY) > 50) {
+            if (deltaY > 0) {
+               handleScroll({ deltaY: 1 });
+            } else {
+               handleScroll({ deltaY: -1 });
+            }
+      }
+      touchStartY = null;
+   }
+}
+
+window.addEventListener('touchstart', handleSwipe);
+window.addEventListener('touchend', handleSwipe);
 
 function startAvocadoRotation() {
    if (!rotationAvocadoRunning) {
