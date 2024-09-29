@@ -12,7 +12,7 @@ const scene = new THREE.Scene();
 const spot = document.querySelector('.spot');
 
 const camera = new THREE.PerspectiveCamera(90, sizes.width / sizes.height);
-camera.position.set(0, 0, 370);
+camera.position.set(0, 0, 380);
 scene.add(camera);
 
 const loader = new SVGLoader();

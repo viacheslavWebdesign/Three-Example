@@ -12,7 +12,7 @@ const scene = new THREE.Scene();
 const spot = document.querySelector('.spot');
 
 const camera = new THREE.PerspectiveCamera(90, sizes.width / sizes.height);
-camera.position.set(0, 0, 370);
+camera.position.set(0, 0, 380);
 scene.add(camera);
 
 const loader = new SVGLoader();
@@ -56,8 +56,8 @@ const tick = () => {
    spotGroup.rotation.z = Math.cos(elapsedTime / 16);
    spotGroup.scale.x = 0.95 - Math.sin(elapsedTime / 2) * 0.05;
    spotGroup.scale.y = 0.85 - Math.cos(elapsedTime / 2) * 0.25;
-	renderer.render(scene, camera);
-	window.requestAnimationFrame(tick);
+    renderer.render(scene, camera);
+    window.requestAnimationFrame(tick);
 };
 tick();
 
