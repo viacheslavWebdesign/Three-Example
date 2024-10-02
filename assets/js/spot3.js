@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         vUv = uv;
                         vec4 pos = vec4(position, 1.0);
                         pos.x = pos.x * 2.0 - 1.0;
-                        pos.y += sin(uTime * 3.0 + pos.x * 0.01) / 0.07;
+                        pos.y += sin(uTime * 1.5 + pos.x * 0.01) / 0.07;
                         gl_Position = projectionMatrix * modelViewMatrix * pos;
                     }
                 `;
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 mesh.material.uniforms.uTime.value = elapsedTime;
             }
         });
-        camera.rotation.z = -(elapsedTime / 8);
+        camera.rotation.z = -(elapsedTime / 16);
 
         renderer.render(scene, camera);
         window.requestAnimationFrame(tick);
